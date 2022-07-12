@@ -1,0 +1,39 @@
+.sidebar_container {
+  width: 250px;
+  background: #fff;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar_contents {
+    display: grid;
+    gap: 30px;
+    place-content: center;
+    padding: 14vh 20vh;
+
+    p,
+    a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 27px;
+      color: #646464;
+      width: 100%;
+      padding: 0 1em;
+    }
+
+    .sidebar_logout {
+      margin-top: 30vh;
+
+      p {
+        color: red;
+      }
+    }
+  }
+}
