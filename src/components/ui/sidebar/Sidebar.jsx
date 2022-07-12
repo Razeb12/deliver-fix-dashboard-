@@ -1,26 +1,33 @@
 import "./style.scss";
 import { NavLink } from "react-router-dom";
+import {
+  DASHBOARD_PAGE,
+  PROFILE_PAGE,
+  UPLOAD_PAGE,
+  DESTINATION_PAGE,
+  NOTIFICATION_PAGE,
+} from "../../../routes";
 
 const navLinks = [
   {
     name: "Dashboard",
-    linkUrl: "/dashboard",
+    linkUrl: DASHBOARD_PAGE,
   },
   {
     name: "Upload",
-    linkUrl: "/upload",
+    linkUrl: PROFILE_PAGE,
   },
   {
     name: "Destination",
-    linkUrl: "/destination",
+    linkUrl: UPLOAD_PAGE,
   },
   {
     name: "Notification",
-    linkUrl: "/notification",
+    linkUrl: DESTINATION_PAGE,
   },
   {
     name: "Profile",
-    linkUrl: "/profile",
+    linkUrl: NOTIFICATION_PAGE,
   },
 ];
 
