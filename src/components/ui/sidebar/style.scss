@@ -25,7 +25,10 @@
       line-height: 27px;
       color: #646464;
       width: 100%;
-      padding: 0 1em;
+      padding: 0.5em 3em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .sidebar_logout {
