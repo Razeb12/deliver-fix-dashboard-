@@ -1,5 +1,5 @@
 .sidebar_container {
-  width: 250px;
+  width: 230px;
   background: #fff;
   height: 100vh;
   overflow-y: scroll;
@@ -15,7 +15,7 @@
     display: grid;
     gap: 30px;
     place-content: center;
-    padding: 14vh 20vh;
+    padding: 14vh 5em;
 
     p,
     a {
@@ -25,7 +25,7 @@
       line-height: 27px;
       color: #646464;
       width: 100%;
-      padding: 0.5em 3em;
+      padding: 0.5em 5em;
       display: flex;
       align-items: center;
       gap: 10px;
