@@ -1,19 +1,22 @@
 import { useState, useRef } from "react";
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackgroundCover from "../../assets/images/signin_bg.png";
 import { Form, Input, Button, Checkbox } from "antd";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { DASHBOARD_PAGE } from "../../routes";
 
 const Signin = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
   const onFinish = (values) => {
     setLoading(true);
     console.log("Received values of form: ", values);
     setLoading(false);
+    navigate(DASHBOARD_PAGE);
   };
   return (
     <div className="signin_container">
@@ -51,6 +54,7 @@ const Signin = () => {
               prefix={<RiLockPasswordLine color="#ddd" size={20} />}
               placeholder="Password"
               className="signin_input"
+              type="password"
             />
           </Form.Item>
           {!loading && (
