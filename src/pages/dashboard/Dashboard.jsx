@@ -66,39 +66,46 @@ const Dashboard = () => {
               />
             </Form.Item>
           </div>
-          <div className="dashboard_right">
-            <h3>Files</h3>
-            <p>
-              Please be aware that all files have to be in the format CSV or
-              xlsx.
-            </p>
+        </div>
+        <div className="dashboard_lower_container">
+          <div className="dashboard_lower">
+            <Dragger {...props}>
+              <p className="ant-upload-drag-icon">
+                <InboxOutlined style={{ color: "#699334" }} />
+              </p>
+              <p className="ant-upload-text">
+                Click or drag file to this area to upload
+              </p>
+              <p className="ant-upload-hint">
+                Support for a single or bulk upload. Strictly prohibit from
+                uploading company data or other band files
+              </p>
+            </Dragger>
+            <Dragger {...props}>
+              <p className="ant-upload-drag-icon">
+                <InboxOutlined style={{ color: "#699334" }} />
+              </p>
+              <p className="ant-upload-text">
+                Click or drag file to this area to upload
+              </p>
+              <p className="ant-upload-hint">
+                Support for a single or bulk upload. Strictly prohibit from
+                uploading company data or other band files
+              </p>
+            </Dragger>
           </div>
-        </div>
-        <div className="dashboard_lower">
-          <Dragger {...props}>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined style={{ color: "#699334" }} />
-            </p>
-            <p className="ant-upload-text">
-              Click or drag file to this area to upload
-            </p>
-            <p className="ant-upload-hint">
-              Support for a single or bulk upload. Strictly prohibit from
-              uploading company data or other band files
-            </p>
-          </Dragger>
-        </div>
-        <div className="dashboard_save">
-          {!loading && (
-            <Button type="primary" htmlType="submit" className="submit_btn">
-              Submit
-            </Button>
-          )}
-          {loading && (
-            <Button type="primary" htmlType="button" className="submit_btn">
-              Saving...
-            </Button>
-          )}
+          <div className="dashboard_save">
+            {!loading && (
+              <Button type="primary" htmlType="submit" className="submit_btn">
+                Upload
+              </Button>
+            )}
+            {loading && (
+              <Button type="primary" htmlType="button" className="submit_btn">
+                Uploading...
+              </Button>
+            )}
+          </div>
         </div>
       </Form>
     </div>
