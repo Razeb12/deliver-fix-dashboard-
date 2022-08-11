@@ -5,7 +5,6 @@ const AuthReducer = (prevState, { type, payload }) => {
     case LOGIN:
       return {
         ...prevState,
-        isAuthenticated: false,
         userToken: payload,
       };
     default:

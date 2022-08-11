@@ -1,23 +1,40 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 import BackgroundCover from "../../assets/images/signin_bg.png";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, message } from "antd";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { DASHBOARD_PAGE } from "../../routes";
+import AuthContext from "../../contexts/auth-context/AuthContext";
 
 const Signin = () => {
   const [loading, setLoading] = useState(false);
+  const { userToken, login } = useContext(AuthContext);
   const formRef = useRef();
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     setLoading(true);
-    console.log("Received values of form: ", values);
-    setLoading(false);
-    navigate(DASHBOARD_PAGE);
+    const { email, password } = values;
+    const result = await login(email, password);
+    if (result) {
+      message.success("Login success!");
+      setLoading(false);
+      navigate(DASHBOARD_PAGE);
+    } else {
+      message.error(
+        "The login details you entered does not match any of our records"
+      );
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    if (userToken) {
+      navigate(DASHBOARD_PAGE);
+    } else return;
+  }, [userToken, navigate]);
   return (
     <div className="signin_container">
       <div className="signin_left">

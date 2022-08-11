@@ -7,7 +7,6 @@ import { BASE_URL } from "../../utils/baseUrl";
 
 const AuthState = ({ children }) => {
   const initialState = {
-    isAuthenticated: false,
     userToken: localStorage.getItem("userToken") || null,
   };
 
@@ -19,8 +18,9 @@ const AuthState = ({ children }) => {
         email,
         password,
       });
-      dispatch({ type: LOGIN, payload: data.token });
-      localStorage.setItem("userToken", data.token);
+      dispatch({ type: LOGIN, payload: data.data.token });
+      localStorage.setItem("userToken", data.data.token);
+      return true;
     } catch (error) {
       if (error.response.data.status === false) {
         return false;
@@ -32,7 +32,6 @@ const AuthState = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: state.isAuthenticated,
         userToken: state.userToken,
         login,
       }}
