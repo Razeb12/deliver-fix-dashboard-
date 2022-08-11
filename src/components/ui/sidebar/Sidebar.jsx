@@ -8,6 +8,8 @@ import {
 } from "../../../routes";
 import { MdDashboard, MdFolder, MdNotifications } from "react-icons/md";
 import { ImUser } from "react-icons/im";
+import { useState } from "react";
+import { message } from "antd";
 
 const navLinks = [
   {
@@ -38,6 +40,21 @@ const Sidebar = () => {
     background: "#f6f6f6",
     borderRadius: "12px",
   };
+  const [loading, setLoading] = useState(false);
+
+  const removeToken = () => {
+    setLoading(true);
+    const emptyLS = localStorage.removeItem("userToken");
+    if (!emptyLS) {
+      message.success("Logout success!");
+      setLoading(false);
+      window.location.replace("/");
+    } else {
+      message.error("Logout failed!");
+      setLoading(false);
+      return;
+    }
+  };
   return (
     <div className="sidebar_container">
       <div className="sidebar_contents">
@@ -51,7 +68,12 @@ const Sidebar = () => {
           </NavLink>
         ))}
         <div className="sidebar_logout">
-          <p>LogOut</p>
+          {!loading && (
+            <p onClick={removeToken} style={{ cursor: "pointer" }}>
+              LogOut
+            </p>
+          )}
+          {loading && <p>Logging Out...</p>}
         </div>
       </div>
     </div>
