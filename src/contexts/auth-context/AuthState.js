@@ -14,12 +14,16 @@ const AuthState = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/user/admin/login`, {
-        email,
-        password,
-      });
-      dispatch({ type: LOGIN, payload: data.data.token });
-      localStorage.setItem("userToken", data.data.token);
+      const { data } = await axios.post(
+        `${BASE_URL}/api/v1/auth/signin?q=company`,
+        {
+          email,
+          password,
+        }
+      );
+      dispatch({ type: LOGIN, payload: data.data });
+      localStorage.setItem("userToken", data.data);
+
       return true;
     } catch (error) {
       if (error.response.data.status === false) {
