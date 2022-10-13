@@ -58,10 +58,10 @@ const Sidebar = () => {
   return (
     <div className="sidebar_container">
       <div className="sidebar_contents">
-        {navLinks.map(({ name, linkUrl, index, icon }) => (
+        {navLinks.map(({ name, linkUrl, icon }, index) => (
           <NavLink
             to={linkUrl}
-            key={index}
+            key={name}
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             {icon} {name}
