@@ -1,14 +1,13 @@
-import S from "react-dropzone-uploader";
+import Dropzone from "react-dropzone-uploader";
 import "./style.scss";
 
-const Switch = S.default ? S.default : S;
 const FileUploader = ({ content, handleChangeStatus }) => {
   // called every time a file's `status` changes
 
   return (
-    <Switch
+    <Dropzone
       onChangeStatus={handleChangeStatus}
-      accept="*"
+      accept=".csv, .xlsx, .xls"
       inputContent={(files, extra) =>
         extra.reject ? (
           "Maximium file size is 5mb"
@@ -26,6 +25,9 @@ const FileUploader = ({ content, handleChangeStatus }) => {
       }}
       autoUpload={false}
       maxFiles={1}
+      canRemove={true}
+      canCancel={true}
+      multiple={false}
     />
   );
 };
