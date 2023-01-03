@@ -8,6 +8,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { DASHBOARD_PAGE } from "../../routes";
 import AuthContext from "../../contexts/auth-context/AuthContext";
 
+
 const Signin = () => {
   const [loading, setLoading] = useState(false);
   const { userToken, login } = useContext(AuthContext);
@@ -16,18 +17,19 @@ const Signin = () => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
     setLoading(true);
-    const { email, password } = values;
-    const result = await login(email, password);
-    if (result) {
-      message.success("Login success!");
-      setLoading(false);
-      navigate(DASHBOARD_PAGE);
-    } else {
-      message.error(
-        "The login details you entered does not match any of our records"
-      );
-      setLoading(false);
-    }
+    navigate(DASHBOARD_PAGE);
+    // const { email, password } = values;
+    // const result = await login(email, password);
+    // if (result) {
+    //   message.success("Login success!");
+    //   setLoading(false);
+    //   navigate(DASHBOARD_PAGE);
+    // } else {
+    //   message.error(
+    //     "The login details you entered does not match any of our records"
+    //   );
+    //   setLoading(false);
+    // }
   };
 
   useEffect(() => {
